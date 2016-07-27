@@ -1,0 +1,57 @@
+\documentclass{exam}
+
+% Ensure unique label for each question.
+\makeatletter
+\let\orig@first@questionobject\first@questionobject
+\def\first@questionobject{%
+  \orig@first@questionobject
+  \edef\@queslabel{question@\arabic{section}@\arabic{subsection}@\arabic{question}}%
+}
+\makeatother
+
+% Use triangles instead of question numbers.
+\renewcommand{\questionlabel}{$\triangleright$}
+
+% Hide text "Solution:" before every answer.
+\renewcommand{\solutiontitle}{}
+
+\printanswers
+
+\begin{document}
+
+\begin{questions}
+\question Q1
+
+\begin{solution}
+A1
+\end{solution}
+\end{questions}
+
+% For brevity the following questions don't contain solutions.
+
+\section{Sect 1}
+
+\begin{questions}
+\question Q2
+\question Q3
+\end{questions}
+
+\subsection{Subsect 1.1}
+
+\begin{questions}
+\question Q4
+\end{questions}
+
+\subsection{Subsect 1.2}
+
+\begin{questions}
+\question Q5
+\end{questions}
+
+\section{Sect 2}
+
+\begin{questions}
+\question Q6
+\end{questions}
+
+\end{document}

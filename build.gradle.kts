@@ -1,6 +1,7 @@
 buildscript {
 
     extra["kotlinVersion"] = "1.1-M01"
+    extra["dokkaVersion"] = "0.9.9"
     extra["repo"] = "https://repo.gradle.org/gradle/repo"
 
     repositories {
@@ -9,11 +10,13 @@ buildscript {
 
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlinVersion"]}")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:${extra["dokkaVersion"]}")
     }
 }
 
 apply {
     plugin("kotlin")
+    plugin("org.jetbrains.dokka")
     plugin<ApplicationPlugin>()
 }
 
