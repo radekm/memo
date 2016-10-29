@@ -1,15 +1,12 @@
 buildscript {
-
-    extra["kotlinVersion"] = "1.1-M01"
     extra["dokkaVersion"] = "0.9.9"
-    extra["repo"] = "https://repo.gradle.org/gradle/repo"
 
     repositories {
-        maven { setUrl(extra["repo"]) }
+        gradleScriptKotlin()
     }
 
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlinVersion"]}")
+        classpath(kotlinModule("gradle-plugin"))
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:${extra["dokkaVersion"]}")
     }
 }
@@ -25,13 +22,13 @@ configure<ApplicationPluginConvention> {
 }
 
 repositories {
-    maven { setUrl(extra["repo"]) }
+    gradleScriptKotlin()
 }
 
 dependencies {
-    compile("org.jetbrains.kotlin:kotlin-stdlib:${extra["kotlinVersion"]}")
-    compile("org.jetbrains.kotlin:kotlin-stdlib:${extra["kotlinVersion"]}:javadoc")
-    compile("org.jetbrains.kotlin:kotlin-stdlib:${extra["kotlinVersion"]}:sources")
+    compile(kotlinModule("stdlib"))
+    compile(kotlinModule("stdlib", "$embeddedKotlinVersion:javadoc"))
+    compile(kotlinModule("stdlib", "$embeddedKotlinVersion:sources"))
 
     testCompile("junit:junit:4.12")
     testCompile("junit:junit:4.12:javadoc")
